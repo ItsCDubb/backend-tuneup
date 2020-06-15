@@ -40,19 +40,21 @@ def read_movies(src):
     with open(src, 'r') as f:
         return f.read().splitlines()
 
-@profile
 
+@profile
 def find_duplicate_movies(src):
     """Returns a list of duplicate movies from a src list."""
     movie_list = {}
     movies = read_movies(src)
     for movie in movies:
         if movie_list.get(movie):
+            # if it's already there we need to increment it
             movie_list[movie] += 1
         else:
+            # if the movie is already there we need to add it
             movie_list[movie] = 1
-    
-    return [k for k, in movie_list.items() if v > 1]
+
+    return [k for k, v in movie_list.items() if v > 1]
 
 
 def timeit_helper():
