@@ -22,7 +22,7 @@ def profile(func):
         performance_object = cProfile.Profile()
         performance_object.enable()
         result = func(*args, **kwargs)
-        performance_object.disable
+        performance_object.disable()
 
         get_stats_obj = pstats.Stats(performance_object)
         get_stats_obj.strip_dirs()
