@@ -24,10 +24,7 @@ def profile(func):
         result = func(*args, **kwargs)
         performance_object.disable()
 
-        get_stats_obj = pstats.Stats(performance_object)\
-        .strip_dirs()\
-        .sort_stats('cumulative')\
-        .print_stats()
+        get_stats_obj = pstats.Stats(performance_object).strip_dirs().sort_stats('cumulative').print_stats()
 
         return result
 
